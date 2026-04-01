@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import OrbitRing from "./OrbitRing";
 
 const container = {
     hidden: {},
@@ -23,6 +24,9 @@ export default function Hero() {
             {/* Decorative accent */}
             <div className="absolute top-32 right-[8%] w-96 h-96 bg-primary/[0.06] rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-20 left-[6%] w-80 h-80 bg-primary/[0.04] rounded-full blur-3xl pointer-events-none" />
+
+            {/* Orbiting paradigm logos */}
+            <OrbitRing />
 
             <motion.div
                 variants={container}
