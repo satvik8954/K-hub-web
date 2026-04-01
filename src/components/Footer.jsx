@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
     return (
-        <footer id="contact" className="border-t border-border-warm">
-            <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20">
+        <footer id="contact" className="border-t border-surface-container-low bg-surface">
+            <div className="max-w-6xl mx-auto px-6 sm:px-8 md:px-10 lg:px-12 py-16 md:py-20">
                 <motion.div
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -15,10 +15,10 @@ export default function Footer() {
                 >
                     {/* Brand */}
                     <div>
-                        <p className="font-display text-2xl tracking-tight text-charcoal mb-4">
+                        <p className="font-display text-2xl font-bold tracking-tight text-on-surface mb-4">
                             K-Hub
                         </p>
-                        <p className="text-sm text-warm-gray leading-relaxed max-w-xs">
+                        <p className="text-sm text-on-surface-variant leading-relaxed max-w-xs font-light">
                             The deep-tech incubator and venture studio of KMIT Group of
                             Institutions. Learning by doing.
                         </p>
@@ -26,7 +26,7 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <p className="text-[0.72rem] font-medium tracking-[0.2em] uppercase text-warm-gray mb-5">
+                        <p className="text-[0.75rem] font-body font-semibold tracking-[0.1em] uppercase text-primary mb-5">
                             Quick Links
                         </p>
                         <ul className="space-y-3">
@@ -44,7 +44,7 @@ export default function Footer() {
                                                 .querySelector(link.href)
                                                 ?.scrollIntoView({ behavior: "smooth", block: "start" });
                                         }}
-                                        className="text-sm text-warm-gray hover:text-charcoal transition-colors duration-300"
+                                        className="text-sm text-on-surface-variant hover:text-primary transition-colors duration-300 font-light"
                                     >
                                         {link.label}
                                     </a>
@@ -55,10 +55,10 @@ export default function Footer() {
 
                     {/* Contact */}
                     <div>
-                        <p className="text-[0.72rem] font-medium tracking-[0.2em] uppercase text-warm-gray mb-5">
+                        <p className="text-[0.75rem] font-body font-semibold tracking-[0.1em] uppercase text-primary mb-5">
                             Contact
                         </p>
-                        <div className="space-y-3 text-sm text-warm-gray">
+                        <div className="space-y-3 text-sm text-on-surface-variant font-light">
                             <p>
                                 SY No 32/A & 32/E2, Near NGIT College,
                                 <br />
@@ -67,7 +67,7 @@ export default function Footer() {
                             <p>
                                 <a
                                     href="tel:+919052906665"
-                                    className="hover:text-charcoal transition-colors duration-300"
+                                    className="hover:text-primary transition-colors duration-300"
                                 >
                                     +91 9052906665
                                 </a>
@@ -75,7 +75,7 @@ export default function Footer() {
                             <p>
                                 <a
                                     href="mailto:pratham@k-hub.org.in"
-                                    className="hover:text-charcoal transition-colors duration-300"
+                                    className="hover:text-primary transition-colors duration-300"
                                 >
                                     pratham@k-hub.org.in
                                 </a>
@@ -85,11 +85,11 @@ export default function Footer() {
                 </motion.div>
 
                 {/* Bottom bar */}
-                <div className="mt-16 pt-8 border-t border-border-warm flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <p className="text-xs text-warm-gray/70">
+                <div className="mt-16 pt-8 border-t border-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p className="text-xs text-on-surface-variant/60 font-light">
                         © {new Date().getFullYear()} K-Hub. All rights reserved.
                     </p>
-                    <p className="text-xs text-warm-gray/50">
+                    <p className="text-xs text-on-surface-variant/50 font-light">
                         Deep-Tech Innovation Hub
                     </p>
                 </div>

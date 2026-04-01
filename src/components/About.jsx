@@ -16,9 +16,9 @@ const stats = [
 
 export default function About() {
     return (
-        <section id="about" className="py-28 md:py-36">
-            <div className="max-w-6xl mx-auto px-6 md:px-10">
-                <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
+        <section id="about" className="py-20 md:py-28 bg-surface">
+            <div className="max-w-6xl mx-auto px-6 sm:px-8 md:px-10 lg:px-12">
+                <div className="grid md:grid-cols-2 gap-20 md:gap-28 items-center">
                     {/* Left — Text */}
                     <div>
                         <motion.p
@@ -26,7 +26,7 @@ export default function About() {
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-60px" }}
-                            className="text-[0.78rem] font-body font-medium tracking-[0.25em] uppercase text-terracotta mb-6"
+                            className="text-[0.75rem] font-body font-semibold tracking-[0.15em] uppercase text-primary mb-6"
                         >
                             What is K-Hub
                         </motion.p>
@@ -36,11 +36,11 @@ export default function About() {
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-60px" }}
-                            className="font-display text-[clamp(2rem,4vw,3.2rem)] leading-[1.12] tracking-tight text-charcoal mb-8"
+                            className="font-display text-[clamp(1.8rem,4.5vw,3rem)] font-bold leading-[1.1] tracking-tight text-on-surface mb-8"
                         >
                             A Venture Studio for
                             <br />
-                            <span className="text-warm-gray">Deep-Tech Research</span>
+                            <span className="text-on-surface-variant">Deep-Tech Research</span>
                         </motion.h2>
 
                         <motion.div
@@ -48,7 +48,7 @@ export default function About() {
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-60px" }}
-                            className="space-y-5 text-warm-gray leading-[1.75] text-[0.98rem]"
+                            className="space-y-6 text-on-surface-variant leading-[1.7] text-[0.95rem] font-light"
                         >
                             <p>
                                 K-Hub is the deep-tech incubator and venture studio of KMIT
@@ -63,7 +63,7 @@ export default function About() {
                                 startup-style working environment while they are still in their
                                 second and third years.
                             </p>
-                            <p className="text-charcoal font-medium">
+                            <p className="text-on-surface font-medium">
                                 The philosophy is simple: learning by doing — applying computer
                                 science across multiple domains.
                             </p>
@@ -71,7 +71,7 @@ export default function About() {
                     </div>
 
                     {/* Right — Stats */}
-                    <div className="grid grid-cols-2 gap-6 md:mt-16">
+                    <div className="grid grid-cols-2 gap-8">
                         {stats.map((stat, i) => (
                             <motion.div
                                 key={stat.label}
@@ -83,13 +83,13 @@ export default function About() {
                                     duration: 0.6,
                                     ease: [0.22, 1, 0.36, 1],
                                 }}
-                                className="bg-surface border border-border-warm rounded-2xl p-7 md:p-8
-                           hover:border-terracotta/30 transition-colors duration-400"
+                                className="bg-surface-container-lowest rounded-lg p-8
+                           hover:shadow-[0_20px_40px_rgba(28,28,25,0.05)] transition-all duration-400"
                             >
-                                <p className="font-display text-[clamp(2rem,3.5vw,2.8rem)] text-charcoal leading-none mb-2">
+                                <p className="font-display text-[clamp(2rem,4vw,2.8rem)] text-primary font-bold leading-none mb-3">
                                     {stat.number}
                                 </p>
-                                <p className="text-[0.8rem] text-warm-gray font-medium tracking-wide uppercase">
+                                <p className="text-[0.8rem] text-on-surface-variant font-medium tracking-tight uppercase leading-tight">
                                     {stat.label}
                                 </p>
                             </motion.div>

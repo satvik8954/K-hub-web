@@ -49,8 +49,8 @@ const domains = [
 
 export default function Domains() {
     return (
-        <section id="domains" className="py-28 md:py-36 bg-surface">
-            <div className="max-w-6xl mx-auto px-6 md:px-10">
+        <section id="domains" className="py-20 md:py-28 bg-surface-container-low">
+            <div className="max-w-6xl mx-auto px-6 sm:px-8 md:px-10 lg:px-12">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -59,18 +59,18 @@ export default function Domains() {
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className="mb-16 md:mb-20"
                 >
-                    <p className="text-[0.78rem] font-body font-medium tracking-[0.25em] uppercase text-terracotta mb-6">
+                    <p className="text-[0.75rem] font-body font-semibold tracking-[0.15em] uppercase text-primary mb-6">
                         Paradigms
                     </p>
-                    <h2 className="font-display text-[clamp(2rem,4vw,3.2rem)] leading-[1.12] tracking-tight text-charcoal max-w-xl">
+                    <h2 className="font-display text-[clamp(1.8rem,4.5vw,3rem)] font-bold leading-[1.1] tracking-tight text-on-surface max-w-2xl">
                         Six Verticals.
                         <br />
-                        <span className="text-warm-gray">One Mission.</span>
+                        <span className="text-on-surface-variant">One Mission.</span>
                     </h2>
                 </motion.div>
 
                 {/* Grid */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {domains.map((domain, i) => (
                         <motion.div
                             key={domain.name}
@@ -83,25 +83,25 @@ export default function Domains() {
                                 ease: [0.22, 1, 0.36, 1],
                             }}
                             whileHover={{ y: -4 }}
-                            className="group bg-cream border border-border-warm rounded-2xl p-7 md:p-8
-                         hover:border-terracotta/40 hover:shadow-[0_8px_40px_rgba(196,93,62,0.06)]
+                            className="group bg-surface-container-lowest rounded-lg p-8
+                         hover:shadow-[0_20px_40px_rgba(0,108,81,0.08)]
                          transition-all duration-400 cursor-default"
                         >
                             {/* Icon */}
-                            <span className="inline-block text-2xl text-terracotta/60 group-hover:text-terracotta transition-colors duration-300 mb-5">
+                            <span className="inline-block text-3xl text-primary/40 group-hover:text-primary/60 transition-colors duration-300 mb-5">
                                 {domain.icon}
                             </span>
 
                             {/* Name */}
-                            <h3 className="font-display text-xl tracking-tight text-charcoal mb-1">
+                            <h3 className="font-display text-lg font-bold tracking-tight text-on-surface mb-2">
                                 {domain.name}
                             </h3>
-                            <p className="text-[0.78rem] font-medium tracking-wide uppercase text-terracotta mb-4">
+                            <p className="text-[0.8rem] font-semibold tracking-tight uppercase text-primary mb-4">
                                 {domain.tagline}
                             </p>
 
                             {/* Description */}
-                            <p className="text-sm text-warm-gray leading-relaxed">
+                            <p className="text-sm text-on-surface-variant leading-relaxed font-light">
                                 {domain.description}
                             </p>
                         </motion.div>

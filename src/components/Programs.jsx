@@ -31,8 +31,8 @@ const programs = [
 
 export default function Programs() {
     return (
-        <section id="programs" className="py-28 md:py-36">
-            <div className="max-w-6xl mx-auto px-6 md:px-10">
+        <section id="programs" className="py-20 md:py-28">
+            <div className="max-w-6xl mx-auto px-6 sm:px-8 md:px-10 lg:px-12">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -41,18 +41,18 @@ export default function Programs() {
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className="mb-16 md:mb-20"
                 >
-                    <p className="text-[0.78rem] font-body font-medium tracking-[0.25em] uppercase text-terracotta mb-6">
+                    <p className="text-[0.75rem] font-body font-semibold tracking-[0.15em] uppercase text-primary mb-6">
                         Programs
                     </p>
-                    <h2 className="font-display text-[clamp(2rem,4vw,3.2rem)] leading-[1.12] tracking-tight text-charcoal max-w-xl">
+                    <h2 className="font-display text-[clamp(1.8rem,4.5vw,3rem)] font-bold leading-[1.1] tracking-tight text-on-surface max-w-2xl">
                         How We
                         <br />
-                        <span className="text-warm-gray">Build & Learn</span>
+                        <span className="text-on-surface-variant">Build & Learn</span>
                     </h2>
                 </motion.div>
 
                 {/* Program pillars */}
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-8">
                     {programs.map((program, i) => (
                         <motion.div
                             key={program.title}
@@ -64,24 +64,24 @@ export default function Programs() {
                                 duration: 0.6,
                                 ease: [0.22, 1, 0.36, 1],
                             }}
-                            className="group relative bg-surface border border-border-warm rounded-2xl p-8 md:p-10
-                         hover:border-terracotta/30 transition-all duration-400"
+                            className="group relative bg-surface-container-lowest rounded-lg p-10
+                         hover:shadow-[0_20px_40px_rgba(0,108,81,0.08)] transition-all duration-400"
                         >
                             {/* Number */}
-                            <span className="inline-block text-[0.72rem] font-body font-semibold tracking-[0.2em] text-terracotta/50 group-hover:text-terracotta transition-colors duration-300 mb-5">
+                            <span className="inline-block text-[0.75rem] font-body font-semibold tracking-[0.1em] text-primary/40 group-hover:text-primary/60 transition-colors duration-300 mb-6">
                                 {program.number}
                             </span>
 
-                            <h3 className="font-display text-2xl md:text-[1.7rem] tracking-tight text-charcoal mb-3">
+                            <h3 className="font-display text-2xl md:text-[1.625rem] font-bold tracking-tight text-on-surface mb-4">
                                 {program.title}
                             </h3>
 
-                            <p className="text-[0.94rem] text-warm-gray leading-relaxed">
+                            <p className="text-[0.95rem] text-on-surface-variant leading-relaxed font-light">
                                 {program.description}
                             </p>
 
-                            {/* Hover accent bar */}
-                            <div className="absolute bottom-0 left-8 right-8 h-[2px] bg-terracotta/0 group-hover:bg-terracotta/20 rounded-full transition-all duration-500" />
+                            {/* Accent pip */}
+                            <div className="absolute left-0 top-10 w-[3px] h-3 bg-primary rounded-full group-hover:h-6 transition-all duration-500" />
                         </motion.div>
                     ))}
                 </div>
@@ -92,7 +92,7 @@ export default function Programs() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
                     transition={{ delay: 0.2, duration: 0.6 }}
-                    className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+                    className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
                 >
                     {[
                         { title: "Workrooms", desc: "Dedicated research spaces" },
@@ -102,13 +102,13 @@ export default function Programs() {
                     ].map((item, i) => (
                         <div
                             key={item.title}
-                            className="bg-cream border border-border-warm rounded-xl px-6 py-5
-                         hover:border-terracotta/20 transition-colors duration-300"
+                            className="bg-surface-container-low rounded-lg px-6 py-5
+                         hover:shadow-[0_10px_20px_rgba(0,108,81,0.05)] transition-all duration-300"
                         >
-                            <p className="text-sm font-medium text-charcoal mb-1">
+                            <p className="text-sm font-semibold text-on-surface mb-1">
                                 {item.title}
                             </p>
-                            <p className="text-xs text-warm-gray">{item.desc}</p>
+                            <p className="text-xs text-on-surface-variant font-light">{item.desc}</p>
                         </div>
                     ))}
                 </motion.div>
