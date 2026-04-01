@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #F8F5F0;
+  --color-surface: #FFFFFF;
+  --color-charcoal: #111111;
+  --color-warm-gray: #666666;
+  --color-terracotta: #D35400;
+  --color-terracotta-dark: #A04000;
+  --color-border-warm: #EAE6DF;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+::selection {
+  background: var(--color-terracotta);
+  color: white;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-warm);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-warm-gray);
+}
+
+.max-w-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .max-w-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
