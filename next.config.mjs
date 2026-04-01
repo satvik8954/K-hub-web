@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  allowedDevOrigins: [
+    process.env.REPLIT_DEV_DOMAIN,
+    '*.replit.dev',
+    '*.spock.replit.dev',
+  ].filter(Boolean),
 };
 
 export default nextConfig;
