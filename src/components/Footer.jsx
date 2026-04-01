@@ -4,21 +4,21 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
     return (
-        <footer id="contact" className="bg-cream border-t border-border-warm pt-16 md:pt-24 pb-8">
-            <div className="max-w-container">
+        <footer id="contact" className="border-t border-border-warm">
+            <div className="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12"
+                    className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16"
                 >
                     {/* Brand */}
-                    <div className="lg:col-span-2">
-                        <h3 className="text-2xl font-bold tracking-tight text-charcoal mb-4">
+                    <div>
+                        <p className="font-display text-2xl tracking-tight text-charcoal mb-4">
                             K-Hub
-                        </h3>
-                        <p className="text-sm text-warm-gray leading-relaxed max-w-sm">
+                        </p>
+                        <p className="text-sm text-warm-gray leading-relaxed max-w-xs">
                             The deep-tech incubator and venture studio of KMIT Group of
                             Institutions. Learning by doing.
                         </p>
@@ -26,9 +26,9 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="text-xs font-bold tracking-widest uppercase text-charcoal mb-5">
+                        <p className="text-[0.72rem] font-medium tracking-[0.2em] uppercase text-warm-gray mb-5">
                             Quick Links
-                        </h4>
+                        </p>
                         <ul className="space-y-3">
                             {[
                                 { label: "About", href: "#about" },
@@ -40,9 +40,11 @@ export default function Footer() {
                                         href={link.href}
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
+                                            document
+                                                .querySelector(link.href)
+                                                ?.scrollIntoView({ behavior: "smooth", block: "start" });
                                         }}
-                                        className="text-sm font-medium text-warm-gray hover:text-terracotta transition-colors"
+                                        className="text-sm text-warm-gray hover:text-charcoal transition-colors duration-300"
                                     >
                                         {link.label}
                                     </a>
@@ -51,37 +53,45 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Contact Component */}
+                    {/* Contact */}
                     <div>
-                        <h4 className="text-xs font-bold tracking-widest uppercase text-charcoal mb-5">
+                        <p className="text-[0.72rem] font-medium tracking-[0.2em] uppercase text-warm-gray mb-5">
                             Contact
-                        </h4>
+                        </p>
                         <div className="space-y-3 text-sm text-warm-gray">
-                            <p className="leading-relaxed">
-                                SY No 32/A & 32/E2,<br />
-                                Near NGIT College,<br />
-                                Uppal, Hyderabad, Telangana – 500088
+                            <p>
+                                SY No 32/A & 32/E2, Near NGIT College,
+                                <br />
+                                Uppal, Hyderabad, Telangana&nbsp;–&nbsp;500088
                             </p>
-                            <div className="flex flex-col gap-1 mt-4">
-                                <a href="tel:+919052906665" className="font-medium hover:text-terracotta transition-colors">
+                            <p>
+                                <a
+                                    href="tel:+919052906665"
+                                    className="hover:text-charcoal transition-colors duration-300"
+                                >
                                     +91 9052906665
                                 </a>
-                                <a href="mailto:pratham@k-hub.org.in" className="font-medium hover:text-terracotta transition-colors">
+                            </p>
+                            <p>
+                                <a
+                                    href="mailto:pratham@k-hub.org.in"
+                                    className="hover:text-charcoal transition-colors duration-300"
+                                >
                                     pratham@k-hub.org.in
                                 </a>
-                            </div>
+                            </p>
                         </div>
                     </div>
                 </motion.div>
 
-                {/* Bottom Bar */}
-                <div className="mt-16 pt-8 border-t border-border-warm flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p className="text-xs text-warm-gray">
+                {/* Bottom bar */}
+                <div className="mt-16 pt-8 border-t border-border-warm flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p className="text-xs text-warm-gray/70">
                         © {new Date().getFullYear()} K-Hub. All rights reserved.
                     </p>
-                    <div className="text-xs text-warm-gray/70">
+                    <p className="text-xs text-warm-gray/50">
                         Deep-Tech Innovation Hub
-                    </div>
+                    </p>
                 </div>
             </div>
         </footer>

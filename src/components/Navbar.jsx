@@ -15,7 +15,7 @@ export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 20);
+        const handleScroll = () => setScrolled(window.scrollY > 40);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -32,60 +32,62 @@ export default function Navbar() {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                    ? "bg-cream/90 backdrop-blur-md border-b border-border-warm py-4"
-                    : "bg-transparent py-6"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+                ? "bg-cream/80 backdrop-blur-xl border-b border-border-warm shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
+                : "bg-transparent"
                 }`}
         >
-            <div className="max-w-container flex items-center justify-between">
-                {/* Logo */}
-                <a
-                    href="#"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                    }}
-                    className="text-xl font-bold tracking-tight text-charcoal hover:text-terracotta transition-colors"
-                >
-                    K-Hub
-                </a>
+            <div className="max-w-6xl mx-auto px-6 md:px-10">
+                <div className="flex items-center justify-between h-16 md:h-20">
+                    {/* Logo */}
+                    <a
+                        href="#"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className="font-display text-2xl md:text-[1.65rem] tracking-tight text-charcoal hover:text-terracotta transition-colors duration-300"
+                    >
+                        K-Hub
+                    </a>
 
-                {/* Desktop nav */}
-                <div className="hidden md:flex items-center gap-8">
-                    {navLinks.map((link, i) => (
-                        <motion.a
-                            key={link.href}
-                            href={link.href}
-                            onClick={(e) => handleLinkClick(e, link.href)}
-                            initial={{ opacity: 0, y: -8 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 + i * 0.05, duration: 0.5 }}
-                            className="text-sm font-medium text-warm-gray hover:text-charcoal transition-colors tracking-wide"
-                        >
-                            {link.label}
-                        </motion.a>
-                    ))}
+                    {/* Desktop nav */}
+                    <div className="hidden md:flex items-center gap-10">
+                        {navLinks.map((link, i) => (
+                            <motion.a
+                                key={link.href}
+                                href={link.href}
+                                onClick={(e) => handleLinkClick(e, link.href)}
+                                initial={{ opacity: 0, y: -8 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.1 + i * 0.06, duration: 0.5 }}
+                                className="text-[0.84rem] font-body font-medium text-warm-gray hover:text-charcoal transition-colors duration-300 tracking-wide uppercase"
+                            >
+                                {link.label}
+                            </motion.a>
+                        ))}
+                    </div>
+
+                    {/* Mobile hamburger */}
+                    <button
+                        onClick={() => setMobileOpen((o) => !o)}
+                        className="md:hidden relative w-7 h-5 flex flex-col justify-between"
+                        aria-label="Toggle menu"
+                    >
+                        <span
+                            className={`block w-full h-[1.5px] bg-charcoal transition-all duration-300 origin-center ${mobileOpen ? "rotate-45 translate-y-[9px]" : ""
+                                }`}
+                        />
+                        <span
+                            className={`block w-full h-[1.5px] bg-charcoal transition-all duration-300 ${mobileOpen ? "opacity-0 scale-0" : ""
+                                }`}
+                        />
+                        <span
+                            className={`block w-full h-[1.5px] bg-charcoal transition-all duration-300 origin-center ${mobileOpen ? "-rotate-45 -translate-y-[9px]" : ""
+                                }`}
+                        />
+                    </button>
                 </div>
-
-                {/* Mobile hamburger */}
-                <button
-                    onClick={() => setMobileOpen((o) => !o)}
-                    className="md:hidden relative w-6 h-5 flex flex-col justify-between focus:outline-none"
-                    aria-label="Toggle menu"
-                >
-                    <span
-                        className={`block w-full h-[2px] bg-charcoal rounded transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-[9px]" : ""
-                            }`}
-                    />
-                    <span
-                        className={`block w-full h-[2px] bg-charcoal rounded transition-all duration-300 ${mobileOpen ? "opacity-0" : ""
-                            }`}
-                    />
-                    <span
-                        className={`block w-full h-[2px] bg-charcoal rounded transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-[9px]" : ""
-                            }`}
-                    />
-                </button>
             </div>
 
             {/* Mobile menu */}
@@ -95,19 +97,19 @@ export default function Navbar() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="md:hidden overflow-hidden bg-cream/95 backdrop-blur-md border-b border-border-warm"
+                        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                        className="md:hidden overflow-hidden bg-cream/95 backdrop-blur-xl border-b border-border-warm"
                     >
-                        <div className="max-w-container py-6 flex flex-col gap-6">
+                        <div className="px-6 py-6 flex flex-col gap-5">
                             {navLinks.map((link, i) => (
                                 <motion.a
                                     key={link.href}
                                     href={link.href}
                                     onClick={(e) => handleLinkClick(e, link.href)}
-                                    initial={{ opacity: 0, x: -10 }}
+                                    initial={{ opacity: 0, x: -12 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: i * 0.05 }}
-                                    className="text-base font-medium text-charcoal"
+                                    transition={{ delay: i * 0.06 }}
+                                    className="text-sm font-medium text-warm-gray hover:text-charcoal tracking-wide uppercase transition-colors"
                                 >
                                     {link.label}
                                 </motion.a>

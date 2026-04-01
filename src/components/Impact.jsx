@@ -4,61 +4,66 @@ import { motion } from "framer-motion";
 
 export default function Impact() {
     return (
-        <section className="py-24 md:py-32">
-            <div className="max-w-container">
-                <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-                    {/* Newsletter */}
+        <section className="py-28 md:py-36 bg-surface">
+            <div className="max-w-6xl mx-auto px-6 md:px-10">
+                <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+                    {/* Left */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true, margin: "-60px" }}
+                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        <p className="text-sm font-bold tracking-widest uppercase text-terracotta mb-4">
+                        <p className="text-[0.78rem] font-body font-medium tracking-[0.25em] uppercase text-terracotta mb-6">
                             Latest
                         </p>
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-6 leading-tight">
+                        <h2 className="font-display text-[clamp(2rem,4vw,3.2rem)] leading-[1.12] tracking-tight text-charcoal mb-6">
                             Paradigm
-                            <br className="hidden md:block" />
-                            <span className="text-warm-gray"> Chronicles</span>
+                            <br />
+                            <span className="text-warm-gray">Chronicles</span>
                         </h2>
-                        <p className="text-base md:text-lg text-warm-gray leading-relaxed mb-8">
+                        <p className="text-[0.94rem] text-warm-gray leading-relaxed mb-8">
                             Our newsletter captures the pulse of K-Hub — research
                             breakthroughs, student stories, and deep-tech developments across
                             all paradigms.
                         </p>
-                        <div className="inline-flex items-center gap-3 bg-surface border border-border-warm rounded-full px-5 py-2.5 shadow-sm">
-                            <span className="w-2.5 h-2.5 bg-terracotta rounded-full animate-pulse" />
-                            <span className="text-sm font-medium text-charcoal">
+                        <div className="inline-flex items-center gap-3 bg-cream border border-border-warm rounded-full px-6 py-3">
+                            <span className="w-2 h-2 bg-terracotta rounded-full animate-pulse" />
+                            <span className="text-sm text-charcoal font-medium">
                                 Issue #1 — December 2025
                             </span>
                         </div>
                     </motion.div>
 
-                    {/* Campus Partners */}
+                    {/* Right — Campus Partners */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ delay: 0.1, duration: 0.6 }}
+                        viewport={{ once: true, margin: "-60px" }}
+                        transition={{ delay: 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        <p className="text-sm font-bold tracking-widest uppercase text-terracotta mb-4">
+                        <p className="text-[0.78rem] font-body font-medium tracking-[0.25em] uppercase text-terracotta mb-6">
                             Campus Partners
                         </p>
                         <div className="space-y-4">
                             {["KMIT", "NGIT", "KMEC"].map((partner, i) => (
                                 <motion.div
                                     key={partner}
-                                    initial={{ opacity: 0, x: 20 }}
+                                    initial={{ opacity: 0, x: 16 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
-                                    className="flex items-center gap-4 bg-surface border border-border-warm rounded-xl p-5 hover:border-terracotta/30 transition-colors"
+                                    transition={{
+                                        delay: 0.2 + i * 0.08,
+                                        duration: 0.5,
+                                        ease: [0.22, 1, 0.36, 1],
+                                    }}
+                                    className="flex items-center gap-4 bg-cream border border-border-warm rounded-xl px-6 py-5
+                             hover:border-terracotta/30 transition-colors duration-300"
                                 >
-                                    <div className="flex-shrink-0 w-12 h-12 bg-terracotta/10 text-terracotta font-bold text-lg rounded-lg flex items-center justify-center">
+                                    <span className="w-10 h-10 rounded-lg bg-terracotta/8 flex items-center justify-center text-sm font-display text-terracotta">
                                         {partner[0]}
-                                    </div>
-                                    <div className="font-semibold text-charcoal text-lg">{partner}</div>
+                                    </span>
+                                    <span className="font-medium text-charcoal">{partner}</span>
                                 </motion.div>
                             ))}
                         </div>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
@@ -16,27 +16,40 @@ const stats = [
 
 export default function About() {
     return (
-        <section id="about" className="py-24 md:py-32 bg-surface">
-            <div className="max-w-container">
-                <div className="grid lg:grid-cols-2 gap-16 items-center lg:items-start">
-                    {/* Left Text */}
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                        variants={fadeUp}
-                    >
-                        <p className="text-sm font-bold tracking-widest uppercase text-terracotta mb-4">
+        <section id="about" className="py-28 md:py-36">
+            <div className="max-w-6xl mx-auto px-6 md:px-10">
+                <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
+                    {/* Left — Text */}
+                    <div>
+                        <motion.p
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-60px" }}
+                            className="text-[0.78rem] font-body font-medium tracking-[0.25em] uppercase text-terracotta mb-6"
+                        >
                             What is K-Hub
-                        </p>
+                        </motion.p>
 
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-6 leading-tight">
+                        <motion.h2
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-60px" }}
+                            className="font-display text-[clamp(2rem,4vw,3.2rem)] leading-[1.12] tracking-tight text-charcoal mb-8"
+                        >
                             A Venture Studio for
-                            <br className="hidden md:block" />
-                            <span className="text-warm-gray"> Deep-Tech Research</span>
-                        </h2>
+                            <br />
+                            <span className="text-warm-gray">Deep-Tech Research</span>
+                        </motion.h2>
 
-                        <div className="space-y-4 text-base md:text-lg text-warm-gray leading-relaxed">
+                        <motion.div
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-60px" }}
+                            className="space-y-5 text-warm-gray leading-[1.75] text-[0.98rem]"
+                        >
                             <p>
                                 K-Hub is the deep-tech incubator and venture studio of KMIT
                                 Group of Institutions. It incubates teams working across
@@ -50,35 +63,35 @@ export default function About() {
                                 startup-style working environment while they are still in their
                                 second and third years.
                             </p>
-                            <p className="font-semibold text-charcoal">
+                            <p className="text-charcoal font-medium">
                                 The philosophy is simple: learning by doing — applying computer
                                 science across multiple domains.
                             </p>
-                        </div>
-                    </motion.div>
+                        </motion.div>
+                    </div>
 
-                    {/* Right Stats Grid */}
-                    <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                    {/* Right — Stats */}
+                    <div className="grid grid-cols-2 gap-6 md:mt-16">
                         {stats.map((stat, i) => (
                             <motion.div
                                 key={stat.label}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
+                                viewport={{ once: true, margin: "-40px" }}
                                 transition={{
                                     delay: i * 0.1,
-                                    duration: 0.5,
-                                    ease: "easeOut",
+                                    duration: 0.6,
+                                    ease: [0.22, 1, 0.36, 1],
                                 }}
-                                className="bg-cream border border-border-warm rounded-xl p-6 sm:p-8 flex flex-col justify-center text-center
-                           shadow-sm hover:border-terracotta/40 transition-colors"
+                                className="bg-surface border border-border-warm rounded-2xl p-7 md:p-8
+                           hover:border-terracotta/30 transition-colors duration-400"
                             >
-                                <div className="text-3xl sm:text-4xl font-extrabold text-charcoal mb-2">
+                                <p className="font-display text-[clamp(2rem,3.5vw,2.8rem)] text-charcoal leading-none mb-2">
                                     {stat.number}
-                                </div>
-                                <div className="text-xs sm:text-sm font-semibold tracking-wide uppercase text-warm-gray">
+                                </p>
+                                <p className="text-[0.8rem] text-warm-gray font-medium tracking-wide uppercase">
                                     {stat.label}
-                                </div>
+                                </p>
                             </motion.div>
                         ))}
                     </div>
