@@ -34,6 +34,33 @@ export default function OrbitRing() {
                 style={{ width: RADIUS * 0.9, height: RADIUS * 0.9 }}
             />
 
+            {/* Center K-Hub logo */}
+            <div
+                style={{
+                    position: "absolute",
+                    width: 110,
+                    height: 110,
+                    borderRadius: "50%",
+                    background: "rgba(255,255,255,0.97)",
+                    border: "1.5px solid rgba(0,108,81,0.13)",
+                    boxShadow: "0 6px 32px rgba(0,0,0,0.09), 0 1.5px 6px rgba(0,108,81,0.08)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backdropFilter: "blur(8px)",
+                    zIndex: 20,
+                }}
+            >
+                <Image
+                    src="/logo-khub.png"
+                    alt="K-Hub"
+                    width={82}
+                    height={82}
+                    priority
+                    style={{ objectFit: "contain" }}
+                />
+            </div>
+
             {/* Rotating ring */}
             <motion.div
                 animate={{ rotate: 360 }}
