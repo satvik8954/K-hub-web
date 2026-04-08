@@ -64,7 +64,7 @@ export default function Hero() {
                     {/* Headline with cycling word */}
                     <motion.h1
                         variants={fadeUp}
-                        className="font-display text-[clamp(2.4rem,5.5vw,4rem)] font-bold leading-[1.08] tracking-tight text-on-surface mb-6"
+                        className="font-display text-[clamp(2rem,4vw,3.6rem)] font-bold leading-[1.1] tracking-tight text-on-surface mb-6"
                     >
                         Building the Future
                         <br />
@@ -119,7 +119,7 @@ export default function Hero() {
                     initial={{ opacity: 0, scale: 0.88 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex-1 flex items-center justify-center"
+                    className="flex-[1.2] flex items-center justify-center"
                 >
                     <OrbitRing />
                 </motion.div>

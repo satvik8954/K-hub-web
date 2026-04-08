@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const logos = [
     { src: "/logo-drugparadigm.webp", name: "Drugparadigm" },
@@ -13,58 +13,147 @@ const logos = [
     { src: "/logo-crystalparadigm.webp", name: "Crystalparadigm" },
 ];
 
-const RADIUS = 230;
-const LOGO_SIZE = 76;
-const DURATION = 28;
+const RADIUS = 270;
+const LOGO_SIZE = 84;
+const NORMAL_DURATION = 28;
+const SLOW_DURATION = 120;
 
 export default function OrbitRing() {
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [isOrbitHovered, setIsOrbitHovered] = useState(false);
+
+    const ringControls = useAnimation();
+    const counterControls = useAnimation();
+
+    useEffect(() => {
+        const dur = isOrbitHovered ? SLOW_DURATION : NORMAL_DURATION;
+        ringControls.start({
+            rotate: 360,
+            transition: { duration: dur, repeat: Infinity, ease: "linear" },
+        });
+        counterControls.start({
+            rotate: -360,
+            transition: { duration: dur, repeat: Infinity, ease: "linear" },
+        });
+    }, [isOrbitHovered]);
+
+    useEffect(() => {
+        ringControls.start({
+            rotate: 360,
+            transition: { duration: NORMAL_DURATION, repeat: Infinity, ease: "linear" },
+        });
+        counterControls.start({
+            rotate: -360,
+            transition: { duration: NORMAL_DURATION, repeat: Infinity, ease: "linear" },
+        });
+    }, []);
+
+    const containerSize = RADIUS * 2 + LOGO_SIZE + 40;
 
     return (
-        <div className="relative flex items-center justify-center" style={{ width: RADIUS * 2 + LOGO_SIZE, height: RADIUS * 2 + LOGO_SIZE }}>
-            {/* Faint dashed orbit track */}
+        <div
+            className="relative flex items-center justify-center select-none"
+            style={{ width: containerSize, height: containerSize }}
+            onMouseEnter={() => setIsOrbitHovered(true)}
+            onMouseLeave={() => {
+                setIsOrbitHovered(false);
+                setHoveredIndex(null);
+            }}
+        >
+            {/* Outer decorative faint ring */}
+            <div
+                className="absolute rounded-full border border-dashed border-outline-variant/10"
+                style={{ width: RADIUS * 2 + 60, height: RADIUS * 2 + 60 }}
+            />
+
+            {/* Main orbit track */}
             <div
                 className="absolute rounded-full border border-dashed border-outline-variant/25"
                 style={{ width: RADIUS * 2, height: RADIUS * 2 }}
             />
 
+            {/* Compass dots on orbit track */}
+            {[0, 90, 180, 270].map((angle) => {
+                const rad = (angle * Math.PI) / 180;
+                const x = RADIUS * Math.cos(rad);
+                const y = RADIUS * Math.sin(rad);
+                return (
+                    <div
+                        key={angle}
+                        className="absolute rounded-full bg-primary/20"
+                        style={{
+                            width: 5,
+                            height: 5,
+                            transform: `translate(${x - 2.5}px, ${y - 2.5}px)`,
+                        }}
+                    />
+                );
+            })}
+
             {/* Center glow */}
             <div
-                className="absolute rounded-full bg-primary/[0.06] blur-2xl pointer-events-none"
-                style={{ width: RADIUS * 0.9, height: RADIUS * 0.9 }}
+                className="absolute rounded-full bg-primary/[0.07] blur-3xl pointer-events-none"
+                style={{ width: RADIUS, height: RADIUS }}
             />
 
+            {/* Hover state label */}
+            {isOrbitHovered && (
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="absolute pointer-events-none"
+                    style={{
+                        bottom: 18,
+                        fontSize: "0.62rem",
+                        fontWeight: 600,
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                        color: "rgba(0,108,81,0.5)",
+                    }}
+                >
+                    Hover a logo to explore
+                </motion.div>
+            )}
+
             {/* Center K-Hub logo */}
-            <div
+            <motion.div
+                animate={isOrbitHovered ? { scale: 1.08 } : { scale: 1 }}
+                transition={{ type: "spring", stiffness: 200, damping: 18 }}
                 style={{
                     position: "absolute",
-                    width: 110,
-                    height: 110,
+                    width: 118,
+                    height: 118,
                     borderRadius: "50%",
                     background: "rgba(255,255,255,0.97)",
-                    border: "1.5px solid rgba(0,108,81,0.13)",
-                    boxShadow: "0 6px 32px rgba(0,0,0,0.09), 0 1.5px 6px rgba(0,108,81,0.08)",
+                    border: isOrbitHovered
+                        ? "2px solid rgba(0,108,81,0.28)"
+                        : "1.5px solid rgba(0,108,81,0.13)",
+                    boxShadow: isOrbitHovered
+                        ? "0 8px 40px rgba(0,108,81,0.15), 0 2px 12px rgba(0,0,0,0.09)"
+                        : "0 6px 32px rgba(0,0,0,0.09), 0 1.5px 6px rgba(0,108,81,0.08)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     backdropFilter: "blur(8px)",
                     zIndex: 20,
+                    transition: "border 0.3s ease, box-shadow 0.3s ease",
                 }}
             >
                 <Image
                     src="/logo-khub.png"
                     alt="K-Hub"
-                    width={82}
-                    height={82}
+                    width={88}
+                    height={88}
                     priority
                     style={{ objectFit: "contain" }}
                 />
-            </div>
+            </motion.div>
 
             {/* Rotating ring */}
             <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: DURATION, repeat: Infinity, ease: "linear" }}
+                animate={ringControls}
                 style={{ position: "absolute", width: RADIUS * 2, height: RADIUS * 2 }}
             >
                 {logos.map((logo, i) => {
@@ -77,8 +166,7 @@ export default function OrbitRing() {
                     return (
                         <motion.div
                             key={logo.name}
-                            animate={{ rotate: -360 }}
-                            transition={{ duration: DURATION, repeat: Infinity, ease: "linear" }}
+                            animate={counterControls}
                             style={{
                                 position: "absolute",
                                 left: cx,
@@ -132,7 +220,7 @@ export default function OrbitRing() {
                                     transition={{ duration: 0.18 }}
                                     style={{
                                         position: "absolute",
-                                        bottom: -28,
+                                        bottom: -30,
                                         left: "50%",
                                         transform: "translateX(-50%)",
                                         whiteSpace: "nowrap",
@@ -140,7 +228,7 @@ export default function OrbitRing() {
                                         fontWeight: 600,
                                         letterSpacing: "0.06em",
                                         color: "rgba(0,108,81,0.85)",
-                                        background: "rgba(255,255,255,0.9)",
+                                        background: "rgba(255,255,255,0.92)",
                                         border: "1px solid rgba(0,108,81,0.15)",
                                         borderRadius: 6,
                                         padding: "2px 8px",
