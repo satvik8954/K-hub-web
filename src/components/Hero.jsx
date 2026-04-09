@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 import OrbitRing from "./OrbitRing";
 
 const CYCLING_WORDS = [
+    "Deep Tech",
     "Drug Discovery",
     "Cybersecurity",
     "Robotics",
+    "Neuroscience",
+    "Neutraceuticals",
     "AI Research",
-    "Deep Tech",
     "Innovation",
 ];
 
@@ -97,7 +99,7 @@ export default function Hero() {
                         className="text-base md:text-lg text-on-surface-variant leading-relaxed mb-9 font-light"
                     >
                         K-Hub is the deep-tech incubator of KMIT Group of Institutions,
-                        empowering students to work on cutting-edge research in drug
+                        empowering students to work on cutting-edge applied research in drug
                         discovery, cybersecurity, robotics, and beyond.
                     </motion.p>
 

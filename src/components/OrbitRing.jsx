@@ -13,8 +13,8 @@ const logos = [
     { src: "/logo-crystalparadigm.webp", name: "Crystalparadigm" },
 ];
 
-const RADIUS = 265;
-const LOGO_SIZE = 82;
+const RADIUS = 240;
+const LOGO_SIZE =110;
 const NORMAL_DURATION = 28;
 const SLOW_DURATION = 120;
 
