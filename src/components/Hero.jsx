@@ -39,45 +39,51 @@ export default function Hero() {
     };
 
     return (
-        <section className="relative min-h-[100dvh] flex items-center overflow-hidden pt-20">
+        <section className="relative min-h-[100dvh] flex items-center overflow-hidden pt-16">
             {/* Background accents */}
             <div className="absolute top-24 right-[5%] w-80 h-80 bg-primary/[0.05] rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-20 left-[4%] w-72 h-72 bg-primary/[0.04] rounded-full blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 flex flex-col lg:flex-row items-center gap-8 lg:gap-4">
 
                 {/* LEFT — Text content */}
                 <motion.div
                     variants={container}
                     initial="hidden"
                     animate="show"
-                    className="flex-1 flex flex-col items-start text-left max-w-xl"
+                    className="flex-1 flex flex-col items-start text-left max-w-lg"
                 >
                     {/* Eyebrow */}
                     <motion.p
                         variants={fadeUp}
-                        className="text-[0.72rem] font-body font-semibold tracking-[0.18em] uppercase text-primary mb-6"
+                        className="text-[0.72rem] font-body font-semibold tracking-[0.18em] uppercase text-primary mb-5"
                     >
                         Deep-Tech Innovation Hub
                     </motion.p>
 
-                    {/* Headline with cycling word */}
+                    {/* Headline — always 3 fixed lines, no layout shift */}
                     <motion.h1
                         variants={fadeUp}
-                        className="font-display text-[clamp(2rem,4vw,3.6rem)] font-bold leading-[1.1] tracking-tight text-on-surface mb-6"
+                        className="font-display font-bold tracking-tight text-on-surface mb-6"
+                        style={{ fontSize: "clamp(2rem, 3.8vw, 3.4rem)", lineHeight: 1.12 }}
                     >
-                        Building the Future
-                        <br />
-                        Through{" "}
-                        <span className="inline-block relative align-bottom" style={{ minWidth: "4px" }}>
+                        {/* Line 1 — fixed */}
+                        <span className="block">Building the Future</span>
+                        {/* Line 2 — fixed */}
+                        <span className="block">Through</span>
+                        {/* Line 3 — fixed height, cycling word never causes reflow */}
+                        <span
+                            className="block overflow-hidden"
+                            style={{ height: "1.12em", position: "relative" }}
+                        >
                             <AnimatePresence mode="wait">
                                 <motion.span
                                     key={wordIndex}
-                                    initial={{ opacity: 0, y: 22, filter: "blur(6px)" }}
-                                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                                    exit={{ opacity: 0, y: -22, filter: "blur(6px)" }}
-                                    transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-                                    className="inline-block text-primary"
+                                    initial={{ opacity: 0, y: "100%", filter: "blur(6px)" }}
+                                    animate={{ opacity: 1, y: "0%", filter: "blur(0px)" }}
+                                    exit={{ opacity: 0, y: "-100%", filter: "blur(6px)" }}
+                                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                                    className="absolute inset-0 text-primary whitespace-nowrap"
                                 >
                                     {CYCLING_WORDS[wordIndex]}
                                 </motion.span>
@@ -88,7 +94,7 @@ export default function Hero() {
                     {/* Subtext */}
                     <motion.p
                         variants={fadeUp}
-                        className="text-base md:text-lg text-on-surface-variant leading-relaxed mb-10 font-light"
+                        className="text-base md:text-lg text-on-surface-variant leading-relaxed mb-9 font-light"
                     >
                         K-Hub is the deep-tech incubator of KMIT Group of Institutions,
                         empowering students to work on cutting-edge research in drug
@@ -115,22 +121,17 @@ export default function Hero() {
                 </motion.div>
 
                 {/* RIGHT — Orbit ring */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.88 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex-[1.2] flex items-center justify-center"
-                >
+                <div className="flex-[1.3] flex items-center justify-center">
                     <OrbitRing />
-                </motion.div>
+                </div>
             </div>
 
             {/* Scroll hint */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 1.4, duration: 0.6 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2"
+                transition={{ delay: 1.6, duration: 0.6 }}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2"
             >
                 <motion.div
                     animate={{ y: [0, 8, 0] }}
